@@ -1,8 +1,14 @@
 const app = Vue.createApp({
     data(){
         return{
-            img: "https://yt3.ggpht.com/ytc/AKedOLQMSrgxItPwy1gW4nke8tyEXNImWjwt3upFTg7g=s900-c-k-c0x00ffffff-no-rj"
+            counter:0,
+            evt: "click"
         }
     },
-    template: `<img v-bind:src="img" v-bind:alt="img">`
+    methods:{
+        increment(){
+            this.counter++;
+        }
+    },
+    template: `<button v-on:[evt]="increment">{{ counter }}</button>`
 }).mount("#app");
