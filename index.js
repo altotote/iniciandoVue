@@ -29,7 +29,14 @@ const app = Vue.createApp({
     },
     template: `
         <div class = "container" :class="[style]">
-            <p> {{ text }}</p>
+            <h2> {{ text }}</h2>
+            <div v-if="open">
+                <p>Bienvenido, {{ username }}</p>
+            </div>
+            <div v-else>
+                <label>Username  </label>
+                <input type="text" v-model="username"/>
+            </div>
             <button @click = "open = !open"> {{ label }} </button>
         </div>
     `   
