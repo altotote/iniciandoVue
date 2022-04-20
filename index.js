@@ -3,7 +3,8 @@ const app = Vue.createApp({
         return{
             
             text: "Puerta cerrada",
-            open: false
+            open: false,
+            style: "close"
             
 
         }
@@ -12,9 +13,12 @@ const app = Vue.createApp({
         open(value){ 
             if(value){
                 this.text = "La puerta esta abierta";
+                this.style = "open";
             }
             else{
                 this.text = "La puerta esta cerrada"; 
+                this.style = "close";
+
             }
         }
     },
@@ -24,8 +28,10 @@ const app = Vue.createApp({
         }
     },
     template: `
-        <p> {{ text }}</p>
-        <button @click = "open = !open"> {{ label }} </button>
-    `
+        <div class = "container" :class="[style]">
+            <p> {{ text }}</p>
+            <button @click = "open = !open"> {{ label }} </button>
+        </div>
+    `   
     
 }).mount("#app");
