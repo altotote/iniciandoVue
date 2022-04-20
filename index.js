@@ -1,14 +1,14 @@
 const app = Vue.createApp({
     data(){
         return{
-            counter:0,
-            evt: "click"
+            
+            text: "Hola Vue"
         }
     },
-    methods:{
-        increment(){
-            this.counter++;
-        }
-    },
-    template: `<button v-on:[evt]="increment">{{ counter }}</button>`
+    template: `
+        <p> {{ text }}</p>
+        <input type="text" v-model="text">
+
+    `
+    
 }).mount("#app");
