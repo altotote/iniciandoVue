@@ -45,11 +45,11 @@ const app = Vue.createApp({
             <h2> {{ text }}</h2>
             <div v-if="open">
                 <p>Bienvenido, {{ username }}</p>
-                <div v-for="item in posts"> 
-                    <div class= "title"> {{ item.title }} </div>
-                    <p>{{ item.description }}</p>
-
-                </div>
+                <item 
+                    v-for="(item, i) in posts"
+                    :key = "i"
+                    :post="item"
+                />
             </div>
             <div v-else>
                 <label>Username  </label>
@@ -59,4 +59,17 @@ const app = Vue.createApp({
         </div>
     `   
     
-}).mount("#app");
+})
+
+app.component("item", {
+    props: ["post"],
+    template: `
+    <div class="item">
+        <div class="title">{{ post.title }}</div>
+        <p>{{ post.description }}</p>
+    </div>
+    `
+});
+
+
+const vm =app.mount("#app");
